@@ -1,0 +1,36 @@
+{
+  "name": "poke_battle",
+  "version": "0.1.0",
+  "description": "Pokemon Battle Simulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify js/app.jsx -o built/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickuhn/poke_battle.git"
+  },
+  "keywords": [
+    "react",
+    "pokemon",
+    "simulation"
+  ],
+  "author": "Nick Kuhn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickuhn/poke_battle/issues"
+  },
+  "homepage": "https://github.com/nickuhn/poke_battle#readme",
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "superagent": "^1.3.0"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
