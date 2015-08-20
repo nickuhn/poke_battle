@@ -4,10 +4,12 @@ var React = require('react');
 
 module.exports = React.createClass({
   render: function() {
+    var attacks = this.props.userAttack.map(function(attack) {
+      return (<p>{attack}</p>);
+    });
     return (
       <section>
-        <p>You did (insert number here) damage to wild (insert name here)!</p>
-        <p>Wild (insert name here) did (insert number here) to you!</p>
+        {attacks}
       </section>
     )
   }

@@ -12,7 +12,9 @@ module.exports = React.createClass({
       enemyPokemon: '',
       enemySprite: '',
       userPokemon: '',
-      userSprite: ''
+      userSprite: '',
+      enemyAttack: '',
+      userAttack: ['Welcome to the Battle!']
     }
   },
 
@@ -62,21 +64,43 @@ module.exports = React.createClass({
   lightAttack: function() {
     var n = Math.floor(Math.random() * this.state.userPokemon.moves.length);
     console.log('light attack', this.state.userPokemon.moves[n].name);
+    var attack = this.state.userPokemon.moves[n].name;
+    var message = 'You used ' + attack + ' it was pretty weak.';
+    console.log(message);
+    console.log(this.state.userAttack);
+    this.setState({
+      userAttack: [message].concat(this.state.userAttack)
+    })
   },
 
   heavyAttack: function() {
     var n = Math.floor(Math.random() * this.state.userPokemon.moves.length);
     console.log('heavy attack', this.state.userPokemon.moves[n].name);
+    var attack = this.state.userPokemon.moves[n].name;
+    var message = 'You used ' + attack + ' it was pretty strong!';
+    this.setState({
+      userAttack: [message].concat(this.state.userAttack)
+    })
   },
 
   lightDefense: function() {
     var n = Math.floor(Math.random() * this.state.userPokemon.moves.length);
     console.log('light defense', this.state.userPokemon.moves[n].name);
+    var attack = this.state.userPokemon.moves[n].name;
+    var message = 'You used ' + attack + ' it blocked a bit.';
+    this.setState({
+      userAttack: [message].concat(this.state.userAttack)
+    })
   },
 
   heavyDefense: function() {
     var n = Math.floor(Math.random() * this.state.userPokemon.moves.length);
     console.log('heavy defense', this.state.userPokemon.moves[n].name);
+    var attack = this.state.userPokemon.moves[n].name;
+    var message = 'You used ' + attack + ' it blocked a lot!';
+    this.setState({
+      userAttack: [message].concat(this.state.userAttack)
+    })
   },
 
   render: function() {
@@ -91,7 +115,7 @@ module.exports = React.createClass({
                     heavyAttack={this.heavyAttack}
                     lightDefense={this.lightDefense}
                     heavyDefense={this.heavyDefense}/>
-        <Printout />
+        <Printout userAttack={this.state.userAttack}/>
       </main>
     );
   }
