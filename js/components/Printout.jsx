@@ -8,7 +8,7 @@ module.exports = React.createClass({
       return (<p>{attack}</p>);
     });
     return (
-      <section>
+      <section id="printOut">
         {attacks}
       </section>
     )
