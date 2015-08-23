@@ -6,7 +6,6 @@ var request = require('superagent');
 module.exports = React.createClass({
 
   render: function() {
-    console.log(this.props.userPokemon);
     return (
       <section id="battleField">
         <span id="enemyText"> Wild {this.props.enemyPokemon.name} HP: {this.props.enemyCurrHp} / {this.props.enemyPokemon.hp} </span>

@@ -16,7 +16,7 @@ module.exports = React.createClass({
       userPokemon: '',
       userSprite: '',
       userCurrHp: 0,
-      userAttack: ['Welcome to the Battle!']
+      userAttack: []
     }
   },
 
@@ -35,6 +35,15 @@ module.exports = React.createClass({
               this.setState({
                 enemySprite: JSON.parse(res.text)
               })
+              request
+                .get('http://pokeapi.co' + curr.descriptions[0].resource_uri)
+                .end(function(err, res) {
+                  var desc = JSON.parse(res.text);
+                  var message = [["A wild " + curr.name + " appeared! "] , ['Pokedex entry for ' + curr.name + ': ' + desc.description]];
+                  this.setState({
+                    userAttack: message.concat(this.state.userAttack)
+                  })
+                }.bind(this))
             }.bind(this))
         }.bind(this));
   },
